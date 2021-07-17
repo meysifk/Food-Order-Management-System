@@ -42,6 +42,33 @@ CREATE TABLE order_details (
 );
 
 
+INSERT INTO items (name, price) VALUES
+ ('Nasi Goreng Gila', 25000),
+ ('Ice Water', 2000),
+ ('Spaghetti', 40000),
+ ('Orange Juice', 15000),
+ ('Green Tea Latte', 18000),
+ ('Vanilla Ice Cream', 13000),
+ ('Cordon Bleu', 36000)
+;
+
+INSERT INTO categories (name) VALUES
+ ('main dish'),
+ ('beverage'),
+ ('dessert')
+ ;
+
+INSERT INTO item_categories (item_id, category_id) VALUES
+ (1, 1),
+ (2, 2),
+ (3, 1),
+ (3, 1),
+ (4, 2),
+ (5, 2),
+ (6, 3),
+ (7, 1)
+;
+
 INSERT INTO customers (name, phone) VALUES
   ('Agus',    '+6212345678'),
   ('Pertiwi', '+6287654321'),
@@ -86,12 +113,12 @@ INSERT INTO order_details (order_id, item_id) VALUES
 
 
 SELECT 
-	O.id AS `Order ID`,
-	DATE_FORMAT(O.order_date, "%W, %M %e %Y %T") AS `Order Date`,
-	C.name AS `Customer Name`,
-    C.phone AS `Customer Phone`,
-    CONCAT('IDR ', O.total) AS `Total`,
-    GROUP_CONCAT(I.name) AS `Items Bought`
+ O.id AS `Order ID`,
+ DATE_FORMAT(O.order_date, "%W, %M %e %Y %T") AS `Order Date`,
+ C.name AS `Customer Name`,
+ C.phone AS `Customer Phone`,
+ CONCAT('IDR ', O.total) AS `Total`,
+ GROUP_CONCAT(I.name) AS `Items Bought`
   FROM
     customers C
   JOIN
@@ -107,4 +134,5 @@ SELECT
   ON
     OD.item_id = I.id
   GROUP BY
-    C.id;
+    C.id
+ ;
