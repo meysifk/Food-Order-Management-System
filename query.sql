@@ -4,7 +4,8 @@ USE food_oms_db;
 CREATE TABLE customers (
 	  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) NOT NULL UNIQUE
+    phone VARCHAR(255) NOT NULL UNIQUE,
+    address VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE items (
@@ -70,11 +71,11 @@ INSERT INTO item_categories (item_id, category_id) VALUES
 ;
 
 INSERT INTO customers (name, phone) VALUES
-  ('Agus',    '+6212345678'),
-  ('Pertiwi', '+6287654321'),
-  ('Delta',   '+6289753124'),
-  ('Prabowo', '+6212399678'),
-  ('Jokowi',  '+6287654361')
+  ('Agus',    '+6212345678', 'Solo'),
+  ('Pertiwi', '+6287654321', 'Tegal'),
+  ('Delta',   '+6289753124', 'Jakarta'),
+  ('Prabowo', '+6212399678', 'Bogor'),
+  ('Jokowi',  '+6287654361', 'Bandung')
 ;
 
 INSERT INTO orders (order_date, total, customer_id) VALUES 
