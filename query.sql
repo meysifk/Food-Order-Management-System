@@ -20,7 +20,8 @@ CREATE TABLE categories (
 );
 
 CREATE TABLE item_categories (
-	  category_id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    category_id INT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES categories(id),
     item_id INT NOT NULL,
     FOREIGN KEY (item_id) REFERENCES items(id)
@@ -38,8 +39,8 @@ CREATE TABLE order_details (
 	  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     order_id INT NOT NULL,	
     FOREIGN KEY (order_id) REFERENCES orders(id),
-    item_id INT NOT NULL,
-    FOREIGN KEY (item_id) REFERENCES items(id)
+    item_categories_id INT NOT NULL,
+    FOREIGN KEY (item_categories_id) REFERENCES item_categories(id)
 );
 
 
@@ -62,7 +63,6 @@ INSERT INTO categories (name) VALUES
 INSERT INTO item_categories (item_id, category_id) VALUES
  (1, 1),
  (2, 2),
- (3, 1),
  (3, 1),
  (4, 2),
  (5, 2),
@@ -87,28 +87,28 @@ INSERT INTO orders (order_date, total, customer_id) VALUES
 ;
 
 -- Agus IDR 27000
-INSERT INTO order_details (order_id, item_id) VALUES
+INSERT INTO order_details (order_id, item_categories_id) VALUES
 (1, 1),
 (1, 2);
 
 -- Pertiwi IDR 55000
-INSERT INTO order_details (order_id, item_id) VALUES
+INSERT INTO order_details (order_id, item_categories_id) VALUES
 (2, 3),
 (2, 5);
 
 -- Delta IDR 53000
-INSERT INTO order_details (order_id, item_id) VALUES
+INSERT INTO order_details (order_id, item_categories_id) VALUES
 (3, 7),
 (3, 5),
 (3, 2);
 
 -- Prabowo IDR 31000
-INSERT INTO order_details (order_id, item_id) VALUES
+INSERT INTO order_details (order_id, item_categories_id) VALUES
 (4, 4),
 (4, 6);
 
 -- Jokowi IDR 40000
-INSERT INTO order_details (order_id, item_id) VALUES
+INSERT INTO order_details (order_id, item_categories_id) VALUES
 (5, 1),
 (5, 5);
 
@@ -133,7 +133,7 @@ SELECT
   JOIN
     items I
   ON
-    OD.item_id = I.id
+    OD.item_categories_id
   GROUP BY
     C.id
  ;
