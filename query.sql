@@ -70,7 +70,7 @@ INSERT INTO item_categories (item_id, category_id) VALUES
  (7, 1)
 ;
 
-INSERT INTO customers (name, phone) VALUES
+INSERT INTO customers (name, phone, address) VALUES
   ('Agus',    '+6212345678', 'Solo'),
   ('Pertiwi', '+6287654321', 'Tegal'),
   ('Delta',   '+6289753124', 'Jakarta'),
