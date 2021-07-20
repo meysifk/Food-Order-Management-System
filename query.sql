@@ -16,7 +16,7 @@ CREATE TABLE items (
 
 CREATE TABLE categories (
 	  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category VARCHAR(50) NOT NULL UNIQUE,
+    category VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE item_categories (
@@ -54,7 +54,7 @@ INSERT INTO items (name, price) VALUES
  ('Cordon Bleu', 36000)
 ;
 
-INSERT INTO categories (name) VALUES
+INSERT INTO categories (category) VALUES
  ('main dish'),
  ('beverage'),
  ('dessert')
