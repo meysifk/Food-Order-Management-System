@@ -16,11 +16,11 @@ CREATE TABLE items (
 
 CREATE TABLE categories (
 	  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    category VARCHAR(50) NOT NULL UNIQUE
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE item_categories (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     category_id INT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES categories(id),
     item_id INT NOT NULL,
@@ -54,10 +54,10 @@ INSERT INTO items (name, price) VALUES
  ('Cordon Bleu', 36000)
 ;
 
-INSERT INTO categories (category) VALUES
- ('main dish'),
- ('beverage'),
- ('dessert')
+INSERT INTO categories (name) VALUES
+ ('Main Dish'),
+ ('Beverage'),
+ ('Dessert')
  ;
 
 INSERT INTO item_categories (item_id, category_id) VALUES
